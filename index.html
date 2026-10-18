@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samson Osinulu | Graphic Designer Portfolio</title>
+<meta name="description" content="Portfolio of Samson Oluwaseyi Osinulu, graphic designer: brand identity, social media, print, banners and billboards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#dcdcdc; --paper-2:#e8e8e8; --ink:#4a4a4a; --ink-2:#6b6b6b;
+  --black:#000; --orange:#ffa500; --orange-2:#ff8c00; --line:#9a9a9a;
+  --ease:cubic-bezier(.22,.8,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--paper);color:var(--ink);font:500 16px/1.7 'Montserrat',system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+
+/* progress + nav */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);z-index:100}
+nav{position:fixed;inset:0 0 auto 0;z-index:90;transition:background .3s,box-shadow .3s,transform .4s var(--ease)}
+nav.solid{background:rgba(0,0,0,.92);backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,.25)}
+nav.hide{transform:translateY(-100%)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;letter-spacing:1px;color:#fff;font-size:1.05rem}
+.logo b{color:var(--orange)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav ul a{color:#ddd;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:relative;padding:6px 0}
+nav ul a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+nav ul a:hover:after,nav ul a.active:after{width:100%}
+nav:not(.solid){background:linear-gradient(rgba(0,0,0,.7),transparent)}
+.burger{display:none;background:none;border:0;cursor:pointer;width:32px;height:24px;position:relative}
+.burger i{position:absolute;left:0;right:0;height:3px;background:var(--orange);border-radius:2px;transition:.3s}
+.burger i:nth-child(1){top:2px}.burger i:nth-child(2){top:10px}.burger i:nth-child(3){top:18px}
+.burger.open i:nth-child(1){top:10px;transform:rotate(45deg)}
+.burger.open i:nth-child(2){opacity:0}
+.burger.open i:nth-child(3){top:10px;transform:rotate(-45deg)}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero .photo{background:#dcdcdc;position:relative;overflow:hidden}
+.hero .photo img{width:100%;height:100%;object-fit:cover;object-position:center top;animation:zoomIn 1.8s var(--ease) both}
+.hero .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,rgba(0,0,0,.25))}
+.hero .copy{background:#000;display:flex;flex-direction:column;justify-content:center;padding:100px clamp(24px,5vw,80px) 60px;position:relative;overflow:hidden}
+.hero .copy:before{content:"";position:absolute;width:520px;height:520px;right:-200px;bottom:-220px;border-radius:50%;border:2px solid rgba(255,165,0,.35);animation:spin 28s linear infinite}
+.hero .copy:after{content:"";position:absolute;width:300px;height:300px;right:-90px;bottom:-110px;border-radius:50%;background:radial-gradient(circle,rgba(255,165,0,.25),transparent 70%);animation:pulse 5s ease-in-out infinite}
+.hi{color:#fff;font-weight:800;font-size:clamp(1rem,2vw,1.4rem);letter-spacing:1px;text-transform:uppercase;animation:up .9s .2s var(--ease) both}
+.hero h1{color:#fff;font-weight:900;text-transform:uppercase;line-height:1.02;font-size:clamp(2.2rem,5.2vw,4.6rem);margin:6px 0 22px}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span>em{display:block;font-style:normal;animation:rise 1s var(--ease) both}
+.hero h1 span:nth-child(1)>em{animation-delay:.35s;color:var(--orange)}
+.hero h1 span:nth-child(2)>em{animation-delay:.5s;color:var(--orange)}
+.hero h1 span:nth-child(3)>em{animation-delay:.65s}
+.tag{align-self:flex-start;background:var(--orange);color:#fff;font-weight:700;padding:6px 18px;border-radius:4px;animation:up .9s .85s var(--ease) both}
+.hero .sub{color:#bbb;max-width:44ch;margin:24px 0 32px;animation:up .9s 1s var(--ease) both}
+.btns{display:flex;gap:14px;flex-wrap:wrap;animation:up .9s 1.15s var(--ease) both}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#000;font-weight:800;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;padding:15px 30px;border:2px solid var(--orange);border-radius:4px;cursor:pointer;transition:.3s var(--ease);position:relative;overflow:hidden;font-family:inherit}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(255,165,0,.35)}
+.btn.ghost{background:transparent;color:#fff;border-color:#555}
+.btn.ghost:hover{border-color:var(--orange);color:var(--orange);box-shadow:none}
+.scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;width:26px;height:44px;border:2px solid #fff;border-radius:14px;mix-blend-mode:difference}
+.scroll-hint:after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;background:#fff;border-radius:2px;animation:wheel 1.6s infinite}
+
+/* marquee */
+.marquee{background:#000;overflow:hidden;white-space:nowrap;padding:16px 0;border-block:3px solid var(--orange)}
+.marquee div{display:inline-block;animation:slide 32s linear infinite}
+.marquee span{color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:3px;font-size:.9rem;margin:0 22px}
+.marquee span.d{color:var(--orange)}
+
+/* section title box (as in PDF) */
+section{padding:80px 0}
+.titlebox{border:1px solid var(--line);padding:clamp(22px,4vw,52px) 16px;text-align:center;margin-bottom:44px;position:relative;overflow:hidden}
+.titlebox h2{font-weight:900;text-transform:uppercase;color:var(--ink);font-size:clamp(1.8rem,6vw,4.4rem);line-height:1.05}
+.titlebox:before{content:"";position:absolute;left:0;top:0;height:100%;width:0;background:rgba(255,165,0,.12);transition:width 1.2s var(--ease)}
+.titlebox.in:before{width:100%}
+.titlebox small{display:block;letter-spacing:4px;font-weight:700;color:var(--orange-2);font-size:.75rem;margin-bottom:8px;text-transform:uppercase}
+.rule{height:5px;background:var(--ink);margin-top:60px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease)}
+.rule.in{transform:scaleX(1)}
+
+/* about */
+.about p{text-align:justify;color:var(--ink);font-weight:600;max-width:1050px;margin:0 auto 50px}
+.about p b{font-weight:800;color:#222}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:start}
+.skills{background:#000;padding:36px clamp(20px,3vw,40px) 40px}
+.skills h3{color:var(--orange);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:24px;line-height:1}
+.skill-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 36px}
+.skill{margin-bottom:16px}
+.skill .row{display:flex;justify-content:space-between;color:var(--orange);font-weight:800;font-size:.75rem;text-transform:uppercase}
+.skill .row b{color:#fff;font-weight:700}
+.bar{height:11px;background:#fff;margin-top:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange-2),var(--orange));transition:width 1.6s var(--ease)}
+.what h3{font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--ink);margin-bottom:26px}
+.item{display:grid;grid-template-columns:72px 1fr;gap:20px;margin-bottom:26px;padding:16px;border-radius:6px;transition:.35s var(--ease)}
+.item:hover{background:#fff;transform:translateX(8px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.item svg{width:64px;height:64px;fill:var(--ink);transition:.35s}
+.item:hover svg{fill:var(--orange-2);transform:rotate(-6deg) scale(1.08)}
+.item h4{font-weight:800;text-transform:uppercase;font-size:.85rem;color:var(--ink);margin-bottom:4px;line-height:1.35}
+.item p{font-size:.82rem;line-height:1.55;color:var(--ink-2);font-weight:500}
+
+/* stats */
+.stats{background:#000;padding:56px 0}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat b{display:block;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;color:var(--orange);line-height:1}
+.stat span{color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:.72rem}
+
+/* galleries */
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.gallery.six{grid-template-columns:repeat(4,1fr)}
+.shot{background:#fff;padding:7px;cursor:zoom-in;position:relative;overflow:hidden;border:0;font:inherit;display:block;width:100%;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.shot img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .7s var(--ease)}
+.shot.free img{aspect-ratio:auto;object-fit:contain}
+.shot:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 22px 40px rgba(0,0,0,.25);z-index:2}
+.shot:hover img{transform:scale(1.06)}
+.shot:after{content:"+";position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:var(--orange);color:#000;font-weight:900;font-size:1.4rem;line-height:38px;text-align:center;opacity:0;transform:scale(.5);transition:.35s var(--ease)}
+.shot:hover:after{opacity:1;transform:scale(1)}
+.masonry{columns:3;column-gap:18px}
+.masonry .shot{margin-bottom:18px;break-inside:avoid}
+.banners{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center}
+.banners .big{grid-column:span 2}
+.logo-row{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.logo-row .shot:first-child{grid-column:span 2}
+.logo-row .shot:first-child img{aspect-ratio:auto;height:100%;object-fit:cover}
+
+/* contact */
+.contact{background:#000;color:#fff;position:relative;overflow:hidden}
+.contact h2{font-weight:900;text-transform:uppercase;font-size:clamp(2rem,6vw,4.2rem);line-height:1.05;margin-bottom:16px}
+.contact h2 span{color:var(--orange)}
+.contact .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.contact p{color:#bbb;max-width:44ch}
+.cinfo{margin-top:28px;display:grid;gap:10px;font-weight:700}
+.cinfo a{color:var(--orange)}
+form{display:grid;gap:14px}
+.f{position:relative}
+.f input,.f textarea{width:100%;background:#111;border:1px solid #333;color:#fff;padding:22px 16px 8px;font:inherit;border-radius:4px;transition:.3s}
+.f label{position:absolute;left:16px;top:15px;color:#888;font-size:.85rem;pointer-events:none;transition:.25s var(--ease)}
+.f input:focus,.f textarea:focus{outline:0;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,165,0,.2)}
+.f input:focus+label,.f input:not(:placeholder-shown)+label,.f textarea:focus+label,.f textarea:not(:placeholder-shown)+label{top:5px;font-size:.65rem;color:var(--orange);letter-spacing:1px;text-transform:uppercase}
+.hp{position:absolute;left:-9999px}
+#msg{font-weight:700;color:var(--orange);min-height:1.4em}
+footer{background:#000;border-top:1px solid #222;color:#888;text-align:center;padding:22px 0;font-size:.8rem}
+.top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;background:var(--orange);color:#000;border:0;font-size:1.3rem;font-weight:900;cursor:pointer;z-index:80;opacity:0;pointer-events:none;transform:translateY(20px);transition:.4s var(--ease)}
+.top.show{opacity:1;pointer-events:auto;transform:none}
+
+/* lightbox */
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+#lb.open{display:flex;animation:fade .3s both}
+#lb img{max-width:min(92vw,1100px);max-height:86vh;border-radius:4px;animation:zoomIn .4s var(--ease) both}
+#lb button{position:absolute;background:none;border:2px solid #555;color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.3rem;cursor:pointer;transition:.3s}
+#lb button:hover{background:var(--orange);border-color:var(--orange);color:#000}
+#lb .x{top:20px;right:20px}#lb .p{left:20px;top:50%}#lb .n{right:20px;top:50%}
+#lb .c{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#aaa;font-weight:700;letter-spacing:2px;font-size:.8rem}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.rv.l{transform:translateX(-50px)}.rv.r{transform:translateX(50px)}
+.rv.l.in,.rv.r.in{transform:none}
+
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes rise{from{transform:translateY(110%)}to{transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes zoomIn{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:none}}
+@keyframes slide{to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{transform:scale(1.2);opacity:.6}}
+@keyframes wheel{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(16px)}}
+
+@media(max-width:980px){
+  .gallery{grid-template-columns:repeat(3,1fr)}.gallery.six{grid-template-columns:repeat(2,1fr)}
+  .masonry{columns:2}.about-grid,.contact .cols{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .logo-row{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+  nav ul{position:fixed;inset:64px 0 auto 0;background:#000;flex-direction:column;gap:0;padding:12px 24px 24px;transform:translateY(-130%);transition:transform .45s var(--ease)}
+  nav ul.open{transform:none}
+  nav ul a{color:#fff!important;display:block;padding:14px 0;border-bottom:1px solid #222}
+  .burger{display:block}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero .photo{height:60vh}.hero .copy{padding:48px 24px 72px}
+  .scroll-hint{display:none}
+  .gallery,.gallery.six{grid-template-columns:repeat(2,1fr);gap:10px}
+  .masonry{columns:1}.banners{grid-template-columns:1fr}.banners .big{grid-column:auto}
+  .skill-cols{grid-template-columns:1fr}.logo-row{grid-template-columns:repeat(2,1fr)}
+  .logo-row .shot:first-child{grid-column:span 2}
+  section{padding:56px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav id="nav"><div class="wrap">
+  <a href="#top" class="logo">SAMSON<b>.</b>OSINULU</a>
+  <ul id="menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#brand">Brand Identity</a></li>
+    <li><a href="#lapo">LAPO MfB</a></li>
+    <li><a href="#vava">Vava</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#outdoor">Banners</a></li>
+    <li><a href="#print">Print</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="photo"><img src="assets/p01_01.jpg" alt="Samson Oluwaseyi Osinulu"></div>
+  <div class="copy">
+    <div class="hi">Hi there!</div>
+    <h1><span><em>I am Samson</em></span><span><em>Oluwaseyi</em></span><span><em>Osinulu</em></span></h1>
+    <div class="tag">Graphic Designer</div>
+    <p class="sub">I design brand identities, social campaigns, print and outdoor materials that look sharp and stay consistent across every platform.</p>
+    <div class="btns">
+      <a class="btn" href="#brand">View my work &rarr;</a>
+      <a class="btn ghost" href="#contact">Hire me</a>
+    </div>
+  </div>
+  <div class="scroll-hint"></div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+
+<section class="about" id="about"><div class="wrap">
+  <div class="titlebox rv"><small>Who I am</small><h2>About Me</h2></div>
+  <p class="rv">These are some few things about me and my concepts. I have a good interest in conceptualizing digital arts and a good ability for creativity, which can be seen in the quality of the designs I exhibit. Within my years in the creative world, I have learned to conceptualize a variety of graphical content for both print and social media. I have an artistic taste for good graphics display, colour variation and combinations, and I understand evolving technologies in new media. I also have experience working with various design software, including <b>Photoshop, Corel Draw, Illustrator and Premiere Pro</b>.</p>
+
+  <div class="about-grid">
+    <div class="skills rv l">
+      <h3>My Skills</h3>
+      <div class="skill-cols" id="skills"></div>
+    </div>
+    <div class="what rv r">
+      <h3>What I Do</h3>
+      <div class="item">
+        <svg viewBox="0 0 64 64"><path d="M32 4l-6 14 6 6 6-6zM32 27a4 4 0 100 8 4 4 0 000-8zM20 44l12-12 12 12-12 16z"/><circle cx="8" cy="40" r="5"/><circle cx="56" cy="40" r="5"/><path d="M12 38c4-14 10-20 16-22l1 3c-5 3-10 8-13 20zM52 38c-4-14-10-20-16-22l-1 3c5 3 10 8 13 20z"/></svg>
+        <div><h4>Creative designs for all digital platforms</h4><p>I am skilled at creating quality designs with good images and clean alignments for both social media and websites.</p></div>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 64 64"><path d="M16 6h26l8 8v10H16zM10 26h44a4 4 0 014 4v16H46v-8H18v8H6V30a4 4 0 014-4zM20 42h24v16H20z"/></svg>
+        <div><h4>Digital printing and general printing</h4><p>I have experience in printing and branding with a good eye for quality print production and materials. I have completed many print projects and also supervise printing and branding jobs.</p></div>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 64 64"><path d="M22 12l3-5h14l3 5h12a4 4 0 014 4v32a4 4 0 01-4 4H10a4 4 0 01-4-4V16a4 4 0 014-4zM32 22a12 12 0 100 24 12 12 0 000-24zm0 6a6 6 0 110 12 6 6 0 010-12z"/></svg>
+        <div><h4>Photography and event coverage</h4><p>I have experience in photography and event coverage: action pictures, fun moments, group photographs and short videos. I also edit event pictures and short videos for production.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="stats"><div class="wrap">
+  <div class="stat rv"><b data-n="8" data-s="+">0</b><span>Brands served</span></div>
+  <div class="stat rv" style="--d:.1s"><b data-n="100" data-s="+">0</b><span>Designs delivered</span></div>
+  <div class="stat rv" style="--d:.2s"><b data-n="7">0</b><span>Pro design tools</span></div>
+  <div class="stat rv" style="--d:.3s"><b data-n="95" data-s="%">0</b><span>Top skill: Corel Draw</span></div>
+</div></div>
+
+<section id="brand"><div class="wrap">
+  <div class="titlebox rv"><small>Portfolio 01</small><h2>Brand Identity Systems</h2></div>
+  <div class="logo-row" data-gal="3" data-count="10" data-alt="Brand identity"></div>
+  <div class="rule"></div>
+</div></section>
+
+<section id="lapo"><div class="wrap">
+  <div class="titlebox rv"><small>Portfolio 02</small><h2>LAPO Microfinance Bank</h2></div>
+  <div class="gallery" data-gal="4" data-count="10" data-alt="LAPO Microfinance Bank social post"></div>
+  <div style="height:18px"></div>
+  <div class="gallery" data-gal="5" data-count="12" data-alt="LAPO Microfinance Bank campaign"></div>
+  <div class="rule"></div>
+</div></section>
+
+<section id="vava"><div class="wrap">
+  <div class="titlebox rv"><small>Portfolio 03</small><h2>Vava Furnitures</h2></div>
+  <div class="gallery" data-gal="6" data-count="10" data-alt="Vava Furnitures post"></div>
+  <div style="height:36px"></div>
+  <div class="titlebox rv"><h2>Vava Projects</h2></div>
+  <div class="gallery" data-gal="7" data-count="10" data-alt="Vava project"></div>
+  <div class="rule"></div>
+</div></section>
+
+<section id="products"><div class="wrap">
+  <div class="titlebox rv"><small>Portfolio 04</small><h2>Rambo Insecticide</h2></div>
+  <div class="gallery" data-gal="8" data-count="10" data-alt="Rambo Insecticide"></div>
+  <div style="height:36px"></div>
+  <div class="titlebox rv"><h2>Septol Antiseptics</h2></div>
+  <div class="gallery" data-gal="9" data-count="10" data-alt="Septol Antiseptics"></div>
+  <div style="height:36px"></div>
+  <div class="titlebox rv"><h2>Weklin4U</h2></div>
+  <div class="gallery" data-gal="10" data-count="10" data-alt="Weklin4U"></div>
+  <div style="height:36px"></div>
+  <div class="titlebox rv"><h2>JMK Xpress</h2></div>
+  <div class="gallery" data-gal="11" data-count="10" data-alt="JMK Xpress"></div>
+  <div class="rule"></div>
+</div></section>
+
+<section id="outdoor"><div class="wrap">
+  <div class="titlebox rv"><small>Portfolio 05</small><h2>Web Banners / Billboards</h2></div>
+  <div class="masonry" data-gal="12" data-count="8" data-free="1" data-alt="Banner or billboard"></div>
+  <div class="rule"></div>
+</div></section>
+
+<section id="print"><div class="wrap">
+  <div class="titlebox rv"><small>Portfolio 06</small><h2>Printed Materials</h2></div>
+  <div class="masonry" data-gal="13" data-count="18" data-free="1" data-alt="Printed material"></div>
+  <div class="rule"></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap cols">
+  <div class="rv l">
+    <h2>Let's build<br>your <span>brand</span></h2>
+    <p>Have a logo, campaign, print job or event to cover? Tell me about it and I'll get back to you quickly.</p>
+    <div class="cinfo">
+      <span>Email: <a href="mailto:Sheymanprocreatifs@gmail.com">Sheymanprocreatifs@gmail.com</a></span>
+      <span>Phone: <a href="tel:+2348148944057">0814 894 4057</a></span>
+    </div>
+  </div>
+  <form id="form" class="rv r" action="mailto:Sheymanprocreatifs@gmail.com" method="post" enctype="text/plain" novalidate>
+    <div class="f"><input id="n" name="name" placeholder=" " required><label for="n">Your name</label></div>
+    <div class="f"><input id="e" name="email" type="email" placeholder=" " required><label for="e">Email</label></div>
+    <div class="f"><textarea id="m" name="message" rows="5" placeholder=" " required></textarea><label for="m">About your project</label></div>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Send message &rarr;</button>
+    <div id="msg" role="status"></div>
+  </form>
+</div></section>
+
+<footer>© <span id="y"></span> Samson Oluwaseyi Osinulu · Graphic Designer</footer>
+<button class="top" id="top-btn" aria-label="Back to top">&uarr;</button>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="x" aria-label="Close">&times;</button>
+  <button class="p" aria-label="Previous">&lsaquo;</button>
+  <img alt="">
+  <button class="n" aria-label="Next">&rsaquo;</button>
+  <div class="c"></div>
+</div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+// marquee
+const words=['Brand Identity','Social Media','Print Design','Billboards','Photography','Packaging','Event Coverage'];
+$('#mq').innerHTML=[...words,...words,...words,...words].map((w,i)=>`<span>${w}</span><span class="d">✦</span>`).join('');
+
+// skills (values taken from the PDF)
+const skills=[['Adobe Audition',90],['Corel Draw',95],['Adobe Illustrator',60],['Photography',80],['Adobe Photoshop',85],['Adobe Premiere Pro',70],['Office Suites',70]];
+$('#skills').innerHTML=skills.map(([n,v])=>`<div class="skill"><div class="row"><span>${n}</span><b>${v}%</b></div><div class="bar"><i data-w="${v}"></i></div></div>`).join('');
+
+// galleries
+const all=[];
+$$('[data-gal]').forEach(g=>{
+  const pg=String(g.dataset.gal).padStart(2,'0'), n=+g.dataset.count, free=g.dataset.free;
+  let html='';
+  for(let i=1;i<=n;i++){
+    const src=`assets/p${pg}_${String(i).padStart(2,'0')}.jpg`;
+    html+=`<button class="shot rv${free?' free':''}" style="--d:${(i%5)*.07}s" data-src="${src}" aria-label="Open image"><img loading="lazy" src="${src}" alt="${g.dataset.alt} ${i}"></button>`;
+  }
+  g.innerHTML=html;
+});
+// lightbox
+const lb=$('#lb'), lbi=$('img',lb), cap=$('.c',lb);
+let idx=0, shots=[];
+function show(i){idx=(i+shots.length)%shots.length;lbi.style.animation='none';lbi.offsetHeight;lbi.style.animation='';lbi.src=shots[idx].dataset.src;cap.textContent=(idx+1)+' / '+shots.length}
+function open(el){shots=$$('.shot',el.closest('section'));show(shots.indexOf(el));lb.classList.add('open');document.body.style.overflow='hidden'}
+function close(){lb.classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('click',e=>{const s=e.target.closest('.shot');if(s)open(s)});
+$('.x',lb).onclick=close;$('.p',lb).onclick=()=>show(idx-1);$('.n',lb).onclick=()=>show(idx+1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+
+// reveal + bars + counters + rules
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting)return;const el=en.target;el.classList.add('in');io.unobserve(el);
+  $$('.bar i',el).forEach(b=>b.style.width=b.dataset.w+'%');
+  $$('[data-n]',el).concat(el.dataset.n?[el]:[]).forEach(count);
+}),{threshold:.15});
+$$('.rv,.rule,.titlebox').forEach(el=>io.observe(el));
+function count(el){const t=+el.dataset.n,s=el.dataset.s||'',st=performance.now(),d=1600;
+  (function f(now){const p=Math.min((now-st)/d,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)))+s;if(p<1)requestAnimationFrame(f)})(st)}
+// nav behaviour
+const nav=$('#nav'), prog=$('#progress'), topb=$('#top-btn');let lastY=0;
+addEventListener('scroll',()=>{
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(y/h*100)+'%';
+  nav.classList.toggle('solid',y>60);
+  nav.classList.toggle('hide',y>lastY&&y>400&&!$('#menu').classList.contains('open'));
+  topb.classList.toggle('show',y>700);lastY=y;
+},{passive:true});
+topb.onclick=()=>scrollTo({top:0});
+$('#burger').onclick=e=>{e.currentTarget.classList.toggle('open');$('#menu').classList.toggle('open')};
+$$('#menu a').forEach(a=>a.onclick=()=>{$('#burger').classList.remove('open');$('#menu').classList.remove('open')});
+// active link
+const links=$$('#menu a');
+const spy=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+en.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section[id]').forEach(s=>spy.observe(s));
+// subtle parallax on hero photo
+const hp=$('.hero .photo img');
+addEventListener('scroll',()=>{if(scrollY<innerHeight)hp.style.transform=`translateY(${scrollY*.12}px) scale(1.04)`},{passive:true});
+
+// form: validate, honeypot, open mail client
+$('#y').textContent=new Date().getFullYear();
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target,m=$('#msg');
+  if(f.website.value)return;
+  if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)||!f.message.value.trim()){m.textContent='Please fill in your name, a valid email and a message.';return}
+  const to=f.action.replace('mailto:','');
+  location.href=`mailto:${to}?subject=${encodeURIComponent('Project enquiry from '+f.name.value)}&body=${encodeURIComponent(f.message.value+'\n\n'+f.name.value+' ('+f.email.value+')')}`;
+  m.textContent='Thanks! Your email app should open with your message.';
+});
+</script>
+</body>
+</html>
